@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
@@ -77,9 +70,11 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git fzf zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
+
+eval "$(starship init zsh)" 
 
 # User configuration
 
@@ -110,29 +105,32 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-
-
+# Scripts export path
+export PATH="$HOME/scripts:$PATH"
 
 
-
-# zsh-autosuggestions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# zsh-syntax-highlighting (¡siempre al final!)
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# FZF keybindings
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 
 
+### WORK
+
+# ALIASES
+alias k=kubectl
+
+# precommit
+export PATH="$HOME/.local/bin:$PATH"
+
+# NIX + DIRENV
+eval "$(direnv hook zsh)"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.nix-profile/bin:$PATH"
+if [ -e /home/juli/.nix-profile/etc/profile.d/nix.sh ]; then . /home/juli/.nix-profil>
 
 
-
-# Cargar las keybindings de fzf para Ctrl+R y demás
-source /usr/share/fzf/key-bindings.zsh
-
-# Opcional, cargar el completado de fzf (para TAB completado)
-source /usr/share/fzf/completion.zsh
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# SDK 
+export JAVA_HOME=/home/juli/.jdks/corretto-17.0.15
+export PATH=$JAVA_HOME/bin:$PATH
