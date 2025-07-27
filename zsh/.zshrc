@@ -74,8 +74,6 @@ plugins=(git fzf zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-eval "$(starship init zsh)" 
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -105,6 +103,14 @@ eval "$(starship init zsh)"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+#Starship
+eval "$(starship init zsh)" 
+
+
+#Zoxide
+eval "$(zoxide init zsh)"
+
+
 # Scripts export path
 export PATH="$HOME/scripts:$PATH"
 
@@ -128,9 +134,11 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.nix-profile/bin:$PATH"
-if [ -e /home/juli/.nix-profile/etc/profile.d/nix.sh ]; then . /home/juli/.nix-profil>
-
 
 # SDK 
 export JAVA_HOME=/home/juli/.jdks/corretto-17.0.15
 export PATH=$JAVA_HOME/bin:$PATH
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
