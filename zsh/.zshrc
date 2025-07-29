@@ -124,6 +124,7 @@ export PATH="$HOME/scripts:$PATH"
 
 # ALIASES
 alias k=kubectl
+alias cat=bat
 
 # precommit
 export PATH="$HOME/.local/bin:$PATH"
