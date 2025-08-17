@@ -112,7 +112,7 @@ eval "$(zoxide init zsh)"
 
 
 # Scripts export path
-export PATH="$HOME/scripts:$PATH"
+export PATH="$HOME/work-docs/scripts:$PATH"
 
 
 # FZF keybindings
@@ -143,3 +143,6 @@ export PATH=$JAVA_HOME/bin:$PATH
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+source "$HOME/.env"
