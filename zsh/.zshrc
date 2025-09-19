@@ -137,7 +137,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.nix-profile/bin:$PATH"
 
 # SDK 
-export JAVA_HOME=/home/juli/.jdks/corretto-17.0.15
+export JAVA_HOME=/home/juli/.jdks/corretto-17.0.16
 export PATH=$JAVA_HOME/bin:$PATH
 
 export NVM_DIR="$HOME/.nvm"
