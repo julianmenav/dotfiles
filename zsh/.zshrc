@@ -145,4 +145,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
+# DOCKER_HOST ENV VAR for some tests
+export DOCKER_HOST=unix:///var/run/docker.sock
+
+
 source "$HOME/.env"
+
+# opencode
+export PATH=/home/juli/.opencode/bin:$PATH

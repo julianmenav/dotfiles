@@ -41,3 +41,11 @@ hi Pmenu ctermbg=NONE ctermfg=NONE guibg=NONE
 hi FloatBorder ctermbg=NONE ctermfg=NONE guibg=NONE
 hi NormalFloat ctermbg=NONE ctermfg=NONE guibg=NONE
 hi TabLine ctermbg=None ctermfg=None guibg=None
+
+" Move lines up and down with Alt+j and Alt+k
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
