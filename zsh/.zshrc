@@ -153,3 +153,11 @@ source "$HOME/.env"
 
 # opencode
 export PATH=/home/juli/.opencode/bin:$PATH
+
+# ssh-agent with 2-hour key timeout
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 7200 > ~/.ssh/ssh-agent.env
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    source ~/.ssh/ssh-agent.env > /dev/null
+fi
