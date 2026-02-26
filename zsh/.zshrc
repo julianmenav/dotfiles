@@ -161,3 +161,9 @@ fi
 if [[ ! "$SSH_AUTH_SOCK" ]]; then
     source ~/.ssh/ssh-agent.env > /dev/null
 fi
+
+
+# To be able to prevent zsh history from saving commands (for passwords for example)
+setopt HIST_IGNORE_SPACE
+
+
