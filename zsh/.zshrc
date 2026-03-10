@@ -122,7 +122,6 @@ export PATH="$HOME/work-docs/scripts:$PATH"
 # ALIASES
 alias k=kubectl
 alias cat=bat
-
 # precommit
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -163,4 +162,6 @@ fi
 # To be able to prevent zsh history from saving commands (for passwords for example)
 setopt HIST_IGNORE_SPACE
 
+# git-wc
+eval "$(git wt --init zsh)"
 
