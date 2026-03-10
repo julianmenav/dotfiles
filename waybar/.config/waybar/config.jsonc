@@ -21,10 +21,40 @@
   },
 
   "network": {
-    "format-wifi": "",
-    "format-ethernet": "",
-    "format-linked": "",
-    "format-disconnected": ""
+    "format-wifi": "",
+    "format-ethernet": "",
+    "format-linked": "",
+    "format-disconnected": ""
+  },
+
+  "hyprland/language": {
+    "format": " {}",
+    "format-en": " en",
+    "format-es": " es",
+    "keyboard-name": "",
+    "on-click": "hyprctl switchxkblayout all next"
+  },
+
+  "cpu": {
+    "format": " {usage}%",
+    "interval": 2,
+    "tooltip": false
+  },
+
+  "memory": {
+    "format": " {used:0.1f}G",
+    "interval": 30,
+    "tooltip-format": "Used: {used:0.1f}G / Total: {total:0.1f}G"
+  },
+
+  "temperature": {
+    "hwmon-path-abs": "/sys/class/hwmon",
+    "input-filename": "temp1_input",
+    "critical-threshold": 90,
+    "format": " {temperatureC}°C",
+    "format-critical": " {temperatureC}°C",
+    "interval": 5,
+    "tooltip": false
   },
 
   "pulseaudio": {
