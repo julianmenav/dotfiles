@@ -5,9 +5,8 @@
 }
 
 window#waybar {
-    background-color: #111827; /* azul muy oscuro */
-    color: #cdd6f4;            /* color estándar claro para todo */
-    border-bottom: 1px solid #1e293b;
+    background: transparent;
+    color: #cdd6f4;
 }
 
 #window {
@@ -18,25 +17,44 @@ window#waybar {
 
 button {
     border: none;
-    border-radius: 3px;
+    border-radius: 10px;
     padding: 0 6px;
     background: transparent;
     color: inherit;
+    transition: all 0.2s ease;
 }
 
 button:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Workspaces ── */
+#workspaces {
+    background-color: rgba(17, 24, 39, 0.85);
+    border-radius: 12px;
+    margin: 4px 2px;
+    padding: 0 4px;
 }
 
 #workspaces button {
-    padding: 0 4px;
+    padding: 2px 8px;
+    margin: 3px 2px;
+    border-radius: 8px;
+    color: #6b7280;
 }
 
 #workspaces button.focused,
 #workspaces button.active {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(99, 102, 241, 0.3);
+    color: #a5b4fc;
 }
 
+#workspaces button:hover {
+    background-color: rgba(99, 102, 241, 0.15);
+    color: #c7d2fe;
+}
+
+/* ── Shared pill style for all modules ── */
 #language,
 #cpu,
 #memory,
@@ -46,12 +64,101 @@ button:hover {
 #battery,
 #network,
 #tray {
-    margin: 2px 4px;
-    padding: 2px 4px;
-    color: inherit;
+    margin: 4px 3px;
+    padding: 2px 12px;
+    border-radius: 12px;
+    background-color: rgba(17, 24, 39, 0.85);
+    transition: all 0.2s ease;
+}
+
+#language:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#pulseaudio:hover,
+#clock:hover,
+#battery:hover,
+#network:hover {
+    background-color: rgba(30, 41, 59, 0.95);
+}
+
+/* ── Clock ── */
+#clock {
+    color: #a5b4fc;
+    font-weight: bold;
+}
+
+/* ── Language ── */
+#language {
+    color: #c4b5fd;
+}
+
+/* ── CPU ── */
+#cpu {
+    color: #6ee7b7;
+}
+
+/* ── Memory ── */
+#memory {
+    color: #93c5fd;
+}
+
+/* ── Temperature ── */
+#temperature {
+    color: #fcd34d;
 }
 
 #temperature.critical {
-    color: #f38ba8;
+    color: #fca5a5;
+    background-color: rgba(239, 68, 68, 0.25);
 }
 
+/* ── Network ── */
+#network {
+    color: #67e8f9;
+}
+
+#network.disconnected {
+    color: #6b7280;
+}
+
+/* ── Pulseaudio ── */
+#pulseaudio {
+    color: #f9a8d4;
+}
+
+#pulseaudio.muted {
+    color: #6b7280;
+}
+
+/* ── Battery ── */
+#battery {
+    color: #86efac;
+}
+
+#battery.charging {
+    color: #86efac;
+}
+
+#battery.warning:not(.charging) {
+    color: #fcd34d;
+    background-color: rgba(245, 158, 11, 0.2);
+}
+
+#battery.critical:not(.charging) {
+    color: #fca5a5;
+    background-color: rgba(239, 68, 68, 0.25);
+}
+
+/* ── Tray ── */
+#tray {
+    padding: 2px 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}

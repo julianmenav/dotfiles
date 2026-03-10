@@ -1,69 +1,87 @@
 {
   "position": "top",
-  "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["clock"],
-  "modules-right": ["hyprland/language", "cpu", "memory", "temperature", "network", "pulseaudio", "battery", "tray"],
-
+  "margin-top": 4,
+  "margin-left": 8,
+  "margin-right": 8,
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "hyprland/language",
+    "cpu",
+    "memory",
+    "temperature",
+    "network",
+    "pulseaudio",
+    "battery",
+    "tray"
+  ],
   "clock": {
-    "format": "{:%H:%M - %d/%m/%y}",
+    "format": "󰥔  {:%H:%M  %d/%m/%y}",
     "tooltip-format": "{:%A, %d %B %Y}"
   },
-
   "battery": {
     "states": {
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
-    "format-icons": ["", "", "", "", ""]
+    "format": "{icon}  {capacity}%",
+    "format-charging": "  {capacity}%",
+    "format-plugged": "  {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
-
   "network": {
-    "format-wifi": "",
-    "format-ethernet": "",
-    "format-linked": "",
-    "format-disconnected": ""
+    "format-wifi": "󰤨  {essid}",
+    "format-ethernet": "󰈀",
+    "format-linked": "󰈀",
+    "format-disconnected": "󰤮",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname}: {ipaddr}"
   },
-
   "hyprland/language": {
-    "format": " {}",
-    "format-en": " en",
-    "format-es": " es",
-    "keyboard-name": "",
+    "format": "󰌌  {}",
+    "format-English (US)": "󰌌  en",
+    "format-Spanish": "󰌌  es",
     "on-click": "hyprctl switchxkblayout all next"
   },
-
   "cpu": {
-    "format": " {usage}%",
+    "format": "󰻠  {usage}%",
     "interval": 2,
     "tooltip": false
   },
-
   "memory": {
-    "format": " {used:0.1f}G",
+    "format": "󰍛  {used:0.1f}G",
     "interval": 30,
     "tooltip-format": "Used: {used:0.1f}G / Total: {total:0.1f}G"
   },
-
   "temperature": {
     "hwmon-path-abs": "/sys/class/hwmon",
     "input-filename": "temp1_input",
     "critical-threshold": 90,
-    "format": " {temperatureC}°C",
-    "format-critical": " {temperatureC}°C",
+    "format": "󰔏  {temperatureC}°C",
+    "format-critical": "󰔏  {temperatureC}°C",
     "interval": 5,
     "tooltip": false
   },
-
   "pulseaudio": {
-    "format": "{icon}   {volume}%",
-    "format-muted": "",
+    "format": "{icon}  {volume}%",
+    "format-muted": "󰖁  muted",
     "format-icons": {
-      "default": ["", "", ""]
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
     },
     "on-click": "pavucontrol"
   }
 }
-
