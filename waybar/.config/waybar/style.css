@@ -57,7 +57,7 @@ button:hover {
 /* ── Shared pill style for all modules ── */
 #language,
 #cpu,
-#memory,
+#custom-memory,
 #temperature,
 #pulseaudio,
 #clock,
@@ -73,7 +73,7 @@ button:hover {
 
 #language:hover,
 #cpu:hover,
-#memory:hover,
+#custom-memory:hover,
 #temperature:hover,
 #pulseaudio:hover,
 #clock:hover,
@@ -99,8 +99,22 @@ button:hover {
 }
 
 /* ── Memory ── */
-#memory {
+#custom-memory {
     color: #93c5fd;
+}
+
+#custom-memory.warning {
+    color: #fca5a5;
+    background-color: rgba(239, 68, 68, 0.25);
+    animation: vibrate 0.3s linear infinite;
+}
+
+@keyframes vibrate {
+    0%   { margin-left: 3px; margin-right: 3px; }
+    25%  { margin-left: 1px; margin-right: 5px; }
+    50%  { margin-left: 5px; margin-right: 1px; }
+    75%  { margin-left: 1px; margin-right: 5px; }
+    100% { margin-left: 3px; margin-right: 3px; }
 }
 
 /* ── Temperature ── */

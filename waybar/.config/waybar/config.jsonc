@@ -10,7 +10,7 @@
     "clock"
   ],
   "modules-right": [
-    "memory",
+    "custom/memory",
     "cpu",
     "temperature",
     "network",
@@ -58,10 +58,10 @@
     "interval": 2,
     "tooltip": false
   },
-  "memory": {
-    "format": "󰍛  {used:0.1f}G",
-    "interval": 30,
-    "tooltip-format": "Used: {used:0.1f}G / Total: {total:0.1f}G"
+  "custom/memory": {
+    "exec": "~/.config/waybar/memory-alert.sh",
+    "return-type": "json",
+    "interval": 5
   },
   "temperature": {
     "hwmon-path-abs": "/sys/class/hwmon",
