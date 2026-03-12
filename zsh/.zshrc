@@ -122,6 +122,12 @@ export PATH="$HOME/work-docs/scripts:$PATH"
 # ALIASES
 alias k=kubectl
 alias cat=bat
+
+# Open a new Kitty terminal window in the current directory
+# Runs in background with output suppressed, and disowns the process
+# so it continues running even if the parent shell is closed
+kt() { kitty . &>/dev/null & disown; }
+
 # precommit
 export PATH="$HOME/.local/bin:$PATH"
 
