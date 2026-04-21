@@ -12,6 +12,7 @@ $golang\
 $nodejs\
 $python\
 $docker_context\
+$kubernetes\
 $time\
 $line_break\
 $character"""
@@ -30,6 +31,7 @@ teal = "#94e2d5"
 sky = "#89dceb"
 purple = "#b4befe"
 mantle = "#181825"
+red = "#f38ba8"
 
 # 🔧 Módulos básicos
 [os]
@@ -102,6 +104,24 @@ format = "[$symbol $version]($style) "
 symbol = ""
 style = "fg:blue"
 format = "[$symbol $context]($style) "
+
+[kubernetes]
+disabled = false
+detect_folders = []
+detect_files = []
+detect_extensions = []
+format = '[$symbol $context]($style) '
+symbol = '⎈'
+style = 'fg:teal'
+
+[[kubernetes.contexts]]
+context_pattern = 'arn:aws:eks:.*clickferry-prod'
+context_alias = 'prod'
+style = 'bold fg:red'
+
+[[kubernetes.contexts]]
+context_pattern = 'julian\.mena@clickferry'
+context_alias = 'legacy'
 
 [time]
 disabled = false
