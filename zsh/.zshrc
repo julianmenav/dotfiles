@@ -151,7 +151,7 @@ export NVM_DIR="$HOME/.nvm"
 export DOCKER_HOST=unix:///var/run/docker.sock
 
 
-source "$HOME/.env"
+# source "$HOME/.env" Here we had an env for databse so I can get analytics from suppliers but not really secure..
 
 # opencode
 export PATH=/home/juli/.opencode/bin:$PATH
