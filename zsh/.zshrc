@@ -142,9 +142,8 @@ export PATH="$HOME/.nix-profile/bin:$PATH"
 export JAVA_HOME=/home/juli/.jdks/corretto-17.0.16
 export PATH=$JAVA_HOME/bin:$PATH
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# nvm (installed via pacman)
+source /usr/share/nvm/init-nvm.sh
 
 
 # DOCKER_HOST ENV VAR for some tests
