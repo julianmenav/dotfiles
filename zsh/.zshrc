@@ -123,6 +123,8 @@ export PATH="$HOME/work-docs/scripts:$PATH"
 alias k=kubectl
 alias cat=bat
 
+
+
 # Open a new Kitty terminal window in the current directory
 # Runs in background with output suppressed, and disowns the process
 # so it continues running even if the parent shell is closed
@@ -139,7 +141,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.nix-profile/bin:$PATH"
 
 # SDK 
-export JAVA_HOME=/home/juli/.jdks/corretto-17.0.16
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 export PATH=$JAVA_HOME/bin:$PATH
 
 # nvm (installed via pacman)
