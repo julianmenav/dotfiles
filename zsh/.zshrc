@@ -152,13 +152,17 @@ setopt HIST_IGNORE_SPACE
 eval "$(git wt --init zsh 2>/dev/null)"
 
 
-# A random *cat* Pokémon on a new terminal (pacman -S pokemon-colorscripts-git); silent if missing.
-# Same tool HyDE uses, restricted to the feline ones. Remove -n ... to get any Pokémon (-r).
+# A random *ghost-type* Pokémon on a new terminal (pacman -S pokemon-colorscripts-git); silent if missing.
+# Same tool HyDE uses. Names validated against the tool's list (gens 1-8). Use -r instead of -n for any Pokémon.
 if [[ -o interactive ]] && command -v pokemon-colorscripts >/dev/null; then
-    typeset -a _cats=(meowth persian skitty delcatty glameow purugly purrloin liepard shinx luxio luxray
-                      litleo pyroar espurr meowstic litten torracat incineroar perrserker zeraora raikou solgaleo)
-    pokemon-colorscripts --no-title -n "${_cats[RANDOM % ${#_cats[@]} + 1]}"
-    unset _cats
+    typeset -a _ghosts=(gastly haunter gengar misdreavus shuppet banette duskull dusclops sableye drifloon
+                      drifblim mismagius dusknoir spiritomb froslass rotom giratina yamask cofagrigus
+                      frillish jellicent litwick lampent chandelure golett golurk honedge doublade
+                      aegislash phantump trevenant pumpkaboo gourgeist hoopa decidueye sandygast palossand
+                      mimikyu dhelmise marshadow lunala blacephalon sinistea polteageist runerigus dreepy
+                      drakloak dragapult spectrier)
+    pokemon-colorscripts --no-title -n "${_ghosts[RANDOM % ${#_ghosts[@]} + 1]}"
+    unset _ghosts
 fi
 
 
