@@ -152,6 +152,10 @@ setopt HIST_IGNORE_SPACE
 eval "$(git wt --init zsh 2>/dev/null)"
 
 
+# Random Pokémon on a new terminal (pacman -S pokemon-colorscripts-git); silent if missing
+[[ -o interactive ]] && command -v pokemon-colorscripts >/dev/null && pokemon-colorscripts -r --no-title
+
+
 # Per-machine config: work tools, aliases, PATHs.
 # ~/.zshrc.local comes from the host-home / host-work stow package; stow exactly one of them.
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

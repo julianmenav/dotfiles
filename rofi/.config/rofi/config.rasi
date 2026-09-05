@@ -7,9 +7,9 @@
 configuration {
     modi:                        "drun,run,window";
     show-icons:                  true;
-    display-drun:                " ";
-    display-run:                 " ";
-    display-window:              " ";
+    display-drun:                "󰀻 ";
+    display-run:                 "󰆍 ";
+    display-window:              "󰖯 ";
     drun-display-format:         "{name}";
     window-format:               "{w}{t}";
     font:                        "JetBrainsMono Nerd Font 10";
@@ -17,6 +17,10 @@ configuration {
 }
 
 @theme "~/.config/rofi/theme.rasi"
+
+* {
+    entry-bg:           #1a1b26cc;
+}
 
 // Main //
 window {
@@ -38,19 +42,26 @@ mainbox {
     spacing:                     0em;
     padding:                     0em;
     orientation:                 horizontal;
-    children:                    [ "inputbar" , "mode-switcher" , "listbox" ];
+    children:                    [ "mode-switcher" , "listbox" ];
     background-color:            transparent;
 }
 
 // Inputs //
 inputbar {
-    width:                       0em;
     enabled:                     true;
     children:                    [ "entry" ];
+    padding:                     1em 1em 0em 1em;
     background-color:            transparent;
 }
 entry {
-    enabled:                     false;
+    enabled:                     true;
+    placeholder:                 "Search…";
+    placeholder-color:           @main-ex;
+    padding:                     0.6em 1em;
+    border-radius:               0.6em;
+    background-color:            @entry-bg;
+    text-color:                  @main-fg;
+    cursor:                      text;
 }
 
 // Modes //
@@ -79,7 +90,7 @@ listbox {
     padding:                     0em;
     spacing:                     0em;
     orientation:                 vertical;
-    children:                    [ "dummy" , "listview" , "dummy" ];
+    children:                    [ "inputbar" , "listview" ];
     background-color:            transparent;
 }
 listview {
@@ -87,7 +98,7 @@ listview {
     spacing:                     0em;
     enabled:                     true;
     columns:                     1;
-    lines:                       7;
+    lines:                       6;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
