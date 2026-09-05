@@ -1,0 +1,21 @@
+# Work laptop — sourced at the end of the shared .zshrc
+
+# Scripts export path
+export PATH="$HOME/work-docs/scripts:$PATH"
+
+# Kubernetes
+alias k=kubectl
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# NIX + DIRENV
+command -v direnv >/dev/null && eval "$(direnv hook zsh)"
+export PATH="$HOME/.nix-profile/bin:$PATH"
+
+# SDK
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+export PATH=$JAVA_HOME/bin:$PATH
+
+# DOCKER_HOST ENV VAR for some tests
+export DOCKER_HOST=unix:///var/run/docker.sock
+
+# source "$HOME/.env" Here we had an env for databse so I can get analytics from suppliers but not really secure..

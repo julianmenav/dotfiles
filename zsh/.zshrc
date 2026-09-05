@@ -101,15 +101,11 @@ export VISUAL='nvim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #Starship
-eval "$(starship init zsh)" 
+command -v starship >/dev/null && eval "$(starship init zsh)"
 
 
 #Zoxide
-eval "$(zoxide init zsh)"
-
-
-# Scripts export path
-export PATH="$HOME/work-docs/scripts:$PATH"
+command -v zoxide >/dev/null && eval "$(zoxide init zsh)"
 
 
 # FZF keybindings
@@ -117,12 +113,8 @@ export PATH="$HOME/work-docs/scripts:$PATH"
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 
 
-### WORK
-
 # ALIASES
-alias k=kubectl
-alias cat=bat
-
+command -v bat >/dev/null && alias cat=bat
 
 
 # Open a new Kitty terminal window in the current directory
@@ -130,34 +122,20 @@ alias cat=bat
 # so it continues running even if the parent shell is closed
 kt() { kitty . &>/dev/null & disown; }
 
-# precommit
-export PATH="$HOME/.local/bin:$PATH"
 
-# NIX + DIRENV
-eval "$(direnv hook zsh)"
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+# PATH
+export PATH="$HOME/.local/bin:$PATH"   # precommit, pipx, ...
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/.nix-profile/bin:$PATH"
+[[ -d "$HOME/.opencode/bin" ]] && export PATH="$HOME/.opencode/bin:$PATH"
 
-# SDK 
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-export PATH=$JAVA_HOME/bin:$PATH
 
 # nvm (installed via pacman)
-source /usr/share/nvm/init-nvm.sh
+[[ -f /usr/share/nvm/init-nvm.sh ]] && source /usr/share/nvm/init-nvm.sh
 
-
-# DOCKER_HOST ENV VAR for some tests
-export DOCKER_HOST=unix:///var/run/docker.sock
-
-
-# source "$HOME/.env" Here we had an env for databse so I can get analytics from suppliers but not really secure..
-
-# opencode
-export PATH=/home/juli/.opencode/bin:$PATH
 
 # ssh-agent with 2-hour key timeout
+[[ -d ~/.ssh ]] || mkdir -m 700 ~/.ssh
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent -t 7200 > ~/.ssh/ssh-agent.env
 fi
@@ -169,6 +147,11 @@ fi
 # To be able to prevent zsh history from saving commands (for passwords for example)
 setopt HIST_IGNORE_SPACE
 
-# git-wc
-eval "$(git wt --init zsh)"
 
+# git-wt (no-op when the subcommand is not installed)
+eval "$(git wt --init zsh 2>/dev/null)"
+
+
+# Per-machine config: work tools, aliases, PATHs.
+# ~/.zshrc.local comes from the host-home / host-work stow package; stow exactly one of them.
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
