@@ -152,8 +152,14 @@ setopt HIST_IGNORE_SPACE
 eval "$(git wt --init zsh 2>/dev/null)"
 
 
-# Random Pokémon on a new terminal (pacman -S pokemon-colorscripts-git); silent if missing
-[[ -o interactive ]] && command -v pokemon-colorscripts >/dev/null && pokemon-colorscripts -r --no-title
+# A random *cat* Pokémon on a new terminal (pacman -S pokemon-colorscripts-git); silent if missing.
+# Same tool HyDE uses, restricted to the feline ones. Remove -n ... to get any Pokémon (-r).
+if [[ -o interactive ]] && command -v pokemon-colorscripts >/dev/null; then
+    typeset -a _cats=(meowth persian skitty delcatty glameow purugly purrloin liepard shinx luxio luxray
+                      litleo pyroar espurr meowstic litten torracat incineroar perrserker zeraora raikou solgaleo)
+    pokemon-colorscripts --no-title -n "${_cats[RANDOM % ${#_cats[@]} + 1]}"
+    unset _cats
+fi
 
 
 # Per-machine config: work tools, aliases, PATHs.

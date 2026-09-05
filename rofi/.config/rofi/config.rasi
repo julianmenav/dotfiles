@@ -1,5 +1,5 @@
 /**
- * Rofi launcher — HyDE "Style 6" (SimpleStack: vertical mode buttons + list), Tokyo Night colours.
+ * Rofi launcher — HyDE "Style 6" list, without the mode-switcher column, Tokyo Night colours.
  * Origin: HyDE-Project/HyDE  .local/share/hyde/rofi/themes/style_6.rasi
  * Launch: rofi -show drun   (Super+R)      emoji: rofi -show emoji -modi emoji  (needs rofi-emoji)
  */
@@ -7,9 +7,6 @@
 configuration {
     modi:                        "drun,run,window";
     show-icons:                  true;
-    display-drun:                "󰀻 ";
-    display-run:                 "󰆍 ";
-    display-window:              "󰖯 ";
     drun-display-format:         "{name}";
     window-format:               "{w}{t}";
     font:                        "JetBrainsMono Nerd Font 10";
@@ -25,7 +22,7 @@ configuration {
 // Main //
 window {
     height:                      31em;
-    width:                       37em;
+    width:                       30em;
     transparency:                "real";
     fullscreen:                  false;
     enabled:                     true;
@@ -42,7 +39,7 @@ mainbox {
     spacing:                     0em;
     padding:                     0em;
     orientation:                 horizontal;
-    children:                    [ "mode-switcher" , "listbox" ];
+    children:                    [ "listbox" ];
     background-color:            transparent;
 }
 
@@ -62,27 +59,6 @@ entry {
     background-color:            @entry-bg;
     text-color:                  @main-fg;
     cursor:                      text;
-}
-
-// Modes //
-mode-switcher {
-    width:                       9em;
-    orientation:                 vertical;
-    enabled:                     true;
-    padding:                     3em 1.8em 3em 1.8em;
-    spacing:                     1em;
-    background-color:            transparent;
-}
-button {
-    cursor:                      pointer;
-    border-radius:               3em;
-    background-color:            transparent;
-    text-color:                  @main-fg;
-}
-button selected {
-    border-radius:               3em;
-    background-color:            @main-fg;
-    text-color:                  @main-bg;
 }
 
 // Lists //
