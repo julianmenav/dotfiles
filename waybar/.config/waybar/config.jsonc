@@ -87,8 +87,8 @@
   },
   "hyprland/language": {
     "format": "󰌌  {}",
-    "format-English (US)": "󰌌  en",
-    "format-Spanish": "󰌌  es",
+    "format-en": "EN",
+    "format-es": "ES",
     "on-click": "hyprctl switchxkblayout all next"
   },
   "cpu": {
