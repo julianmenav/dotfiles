@@ -1,0 +1,6 @@
+# Packages not in the official Arch repos. install.sh tries pacman first (CachyOS ships
+# some of these in its own repo) and falls back to paru/yay.
+clipse                    # clipboard manager (Super+V)
+bibata-cursor-theme       # cursor "Bibata-Modern-Ice"
+pokemon-colorscripts-git  # ghost Pokémon on new terminals (optional)
+mpvpaper                  # video wallpaper (only used by host-home)

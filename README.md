@@ -16,11 +16,14 @@ stow package that mirrors `$HOME`. The `.stowrc` sets `--target=~`, so the repo 
 ## Install
 
 ```sh
-git clone <this repo> ~/Projects/dotfiles && cd ~/Projects/dotfiles
-stow hyprland hyprlock hypridle hyprpaper waybar rofi dunst kitty gtk qt starship nvim zsh backgrounds
-stow host-home   # or: stow host-work
+git clone https://github.com/julianmenav/dotfiles ~/Projects/dotfiles && cd ~/Projects/dotfiles
+./install.sh --check home    # or work: shows missing packages / stow conflicts, changes nothing
+./install.sh home            # installs packages (pacman + AUR), oh-my-zsh, GTK theme, then stows
+chsh -s /usr/bin/zsh         # once
 ```
 
+Package lists live in `packages/pacman.txt` (official repos) and `packages/aur.txt`. Re-run
+`./install.sh <host>` after a pull when something new was added; it only installs what is missing.
 Switch profile: `stow -D host-work && stow host-home`. Reload Hyprland with `hyprctl reload`.
 
 ## Adding a per-machine difference
