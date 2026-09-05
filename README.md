@@ -7,7 +7,7 @@ stow package that mirrors `$HOME`. The `.stowrc` sets `--target=~`, so the repo 
 ## Layout
 
 - Shared packages (identical on every machine): `hyprland`, `hyprlock`, `hypridle`, `hyprpaper`,
-  `waybar`, `wofi`, `mako`, `kitty`, `starship`, `nvim`, `zsh`, `backgrounds`.
+  `waybar`, `rofi`, `dunst`, `kitty`, `gtk`, `qt`, `starship`, `nvim`, `zsh`, `backgrounds`.
 - Host packages (stow **exactly one**): `host-home` (desktop, NVIDIA), `host-work` (laptop).
   They provide the files the shared configs include at the end:
   - `~/.config/hypr/local.conf` — monitors, GPU env vars, machine-only binds (Slack at work)
@@ -17,7 +17,7 @@ stow package that mirrors `$HOME`. The `.stowrc` sets `--target=~`, so the repo 
 
 ```sh
 git clone <this repo> ~/Projects/dotfiles && cd ~/Projects/dotfiles
-stow hyprland hyprlock hypridle hyprpaper waybar wofi mako kitty starship nvim zsh backgrounds
+stow hyprland hyprlock hypridle hyprpaper waybar rofi dunst kitty gtk qt starship nvim zsh backgrounds
 stow host-home   # or: stow host-work
 ```
 
@@ -27,3 +27,20 @@ Switch profile: `stow -D host-work && stow host-home`. Reload Hyprland with `hyp
 
 Put it in the host package, not in the shared file. Hyprland's `local.conf` is additive: it can
 add binds, override env vars, or `unbind` a shared bind. `~/.zshrc.local` is a normal zsh file.
+
+## Look: HyDE "Tokyo Night", ported
+
+The visual style is a static port of the [HyDE](https://github.com/HyDE-Project/HyDE) Tokyo Night
+theme: waybar islands, rofi launcher (HyDE style 6), dunst, kitty, hyprlock, Hyprland borders/blur,
+GTK/Qt/icon/cursor settings. No HyDE scripts or wallbash; colours are hardcoded in each config.
+
+Extra pieces that are not dotfiles:
+
+```sh
+./scripts/theme-assets.sh   # GTK theme tarball -> ~/.local/share/themes, prints the package list
+sudo pacman -S --needed rofi rofi-emoji dunst qt6ct qt5ct tela-circle-icon-theme-purple
+paru -S bibata-cursor-theme
+```
+
+Programs replaced by the port: wofi -> rofi (`$menu`, Super+R), wofi-emoji -> rofi-emoji (Super+.),
+mako -> dunst. Keybindings are unchanged.
