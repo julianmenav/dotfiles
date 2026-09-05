@@ -58,18 +58,5 @@ setopt HIST_IGNORE_SPACE
 eval "$(git wt --init zsh 2>/dev/null)"
 
 
-# Ghost-type Pokémon on a new terminal (pokemon-colorscripts); silent if not installed
-if [[ -o interactive ]] && command -v pokemon-colorscripts >/dev/null; then
-    typeset -a _ghosts=(gastly haunter gengar misdreavus shuppet banette duskull dusclops sableye drifloon
-                      drifblim mismagius dusknoir spiritomb froslass rotom giratina yamask cofagrigus
-                      frillish jellicent litwick lampent chandelure golett golurk honedge doublade
-                      aegislash phantump trevenant pumpkaboo gourgeist hoopa decidueye sandygast palossand
-                      mimikyu dhelmise marshadow lunala blacephalon sinistea polteageist runerigus dreepy
-                      drakloak dragapult spectrier)
-    pokemon-colorscripts --no-title -n "${_ghosts[RANDOM % ${#_ghosts[@]} + 1]}"
-    unset _ghosts
-fi
-
-
 # Per-machine config (host-* package)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
