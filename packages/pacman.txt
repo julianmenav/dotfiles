@@ -40,7 +40,6 @@ tela-circle-icon-theme-purple
 # Fonts (waybar, kitty, hyprlock, rofi, dunst)
 ttf-jetbrains-mono-nerd
 ttf-cascadia-code-nerd
-ttf-meslo-nerd
 noto-fonts
 noto-fonts-emoji
 cantarell-fonts
