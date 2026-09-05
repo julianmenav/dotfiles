@@ -1,5 +1,3 @@
-# dunst — HyDE geometry/behaviour with static Tokyo Night colours (HyDE generates these via wallbash)
-
 [global]
 monitor = 0
 follow = mouse

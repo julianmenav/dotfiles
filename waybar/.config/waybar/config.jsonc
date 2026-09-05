@@ -1,6 +1,4 @@
 {
-  // HyDE-style layout: one "leaf" island left, a "pill" in the centre, one "leaf" right.
-  // Shapes and colours live in style.css (Tokyo Night palette from the HyDE theme).
   "layer": "top",
   "position": "top",
   "mode": "dock",

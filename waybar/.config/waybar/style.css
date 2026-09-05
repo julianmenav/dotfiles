@@ -1,7 +1,4 @@
-/* Waybar — HyDE island layout with the Tokyo Night palette (HyDE theme "Tokyo Night").
- * Shapes/spacing follow HyDE's defaults.css; colours come from its waybar.theme. */
-
-/* ── Palette (HyDE waybar.theme: Tokyo Night) ── */
+/* Tokyo Night */
 @define-color bar-bg    rgba(0, 0, 0, 0.1);   /* needs the shell-blur layerrule in hyprland.conf */
 @define-color main-bg   #24283b;
 @define-color main-fg   #7aa2f7;
@@ -9,7 +6,6 @@
 @define-color wb-act-fg #b4f9f8;
 @define-color wb-hvr-bg #7aa2f7;
 @define-color wb-hvr-fg #cfc9c2;
-/* extra Tokyo Night accents for states */
 @define-color red       #f7768e;
 @define-color yellow    #e0af68;
 @define-color dim       #565f89;

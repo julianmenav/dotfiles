@@ -1,49 +1,40 @@
 # dotfiles
 
-Managed with [GNU stow](https://www.gnu.org/software/stow/). Every top-level directory is a
-stow package that mirrors `$HOME`. The `.stowrc` sets `--target=~`, so the repo can live anywhere
-(here `~/Projects/dotfiles`) and `stow` always links into your home.
-
-## Layout
-
-- Shared packages (identical on every machine): `hyprland`, `hyprlock`, `hypridle`, `hyprpaper`,
-  `waybar`, `rofi`, `dunst`, `kitty`, `gtk`, `qt`, `starship`, `nvim`, `zsh`, `backgrounds`.
-- Host packages (stow **exactly one**): `host-home` (desktop, NVIDIA), `host-work` (laptop).
-  They provide the files the shared configs include at the end:
-  - `~/.config/hypr/local.conf` — monitors, GPU env vars, machine-only binds (Slack at work)
-  - `~/.zshrc.local` — work tools, aliases, PATHs
+Hyprland desktop, managed with [GNU Stow](https://www.gnu.org/software/stow/). Each top-level
+directory is a stow package mirroring `$HOME`; `.stowrc` targets `~`, so the repo can live anywhere.
 
 ## Install
 
 ```sh
 git clone https://github.com/julianmenav/dotfiles ~/Projects/dotfiles && cd ~/Projects/dotfiles
-./install.sh --check home    # or work: shows missing packages / stow conflicts, changes nothing
-./install.sh home            # installs packages (pacman + AUR), oh-my-zsh, GTK theme, then stows
-chsh -s /usr/bin/zsh         # once
+sudo pacman -S --needed $(grep -v '^#' packages/pacman.txt)
+paru -S --needed $(sed 's/#.*//' packages/aur.txt)
+git clone https://github.com/ohmyzsh/ohmyzsh ~/.oh-my-zsh
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+curl -fsSL https://raw.githubusercontent.com/HyDE-Project/hyde-themes/Tokyo-Night/Source/Gtk_TokyoNight.tar.gz | tar xz -C ~/.local/share/themes
+stow hyprland hyprlock hypridle hyprpaper waybar rofi dunst kitty gtk qt starship nvim zsh backgrounds
+stow host-home   # or host-work
+chsh -s /usr/bin/zsh
 ```
 
-Package lists live in `packages/pacman.txt` (official repos) and `packages/aur.txt`. Re-run
-`./install.sh <host>` after a pull when something new was added; it only installs what is missing.
-Switch profile: `stow -D host-work && stow host-home`. Reload Hyprland with `hyprctl reload`.
+## Layout
 
-## Adding a per-machine difference
+| Package | What |
+|---|---|
+| `hyprland` | compositor config: binds, rules, look; sources `~/.config/hypr/local.conf` last |
+| `hyprlock`, `hypridle`, `hyprpaper` | lock screen, idle, wallpaper (+ `Super+Shift+W` cycle script) |
+| `waybar`, `rofi`, `dunst` | bar, launcher, notifications |
+| `kitty`, `starship`, `zsh`, `nvim` | terminal and shell |
+| `gtk`, `qt` | GTK settings, qt6ct/qt5ct with a matching palette |
+| `backgrounds` | wallpapers, linked to `~/.config/backgrounds` |
+| `host-home`, `host-work` | per-machine: monitors, GPU env, machine-only binds, `~/.zshrc.local` |
 
-Put it in the host package, not in the shared file. Hyprland's `local.conf` is additive: it can
-add binds, override env vars, or `unbind` a shared bind. `~/.zshrc.local` is a normal zsh file.
+Stow exactly one `host-*` package. Everything else is identical on every machine; a difference
+between machines goes into the host package, never into a shared file.
 
-## Look: HyDE "Tokyo Night", ported
+## Look
 
-The visual style is a static port of the [HyDE](https://github.com/HyDE-Project/HyDE) Tokyo Night
-theme: waybar islands, rofi launcher (HyDE style 6), dunst, kitty, hyprlock, Hyprland borders/blur,
-GTK/Qt/icon/cursor settings. No HyDE scripts or wallbash; colours are hardcoded in each config.
-
-Extra pieces that are not dotfiles:
-
-```sh
-./scripts/theme-assets.sh   # GTK theme tarball -> ~/.local/share/themes, prints the package list
-sudo pacman -S --needed rofi rofi-emoji dunst qt6ct qt5ct tela-circle-icon-theme-purple
-paru -S bibata-cursor-theme
-```
-
-Programs replaced by the port: wofi -> rofi (`$menu`, Super+R), wofi-emoji -> rofi-emoji (Super+.),
-mako -> dunst. Keybindings are unchanged.
+Tokyo Night, following the [HyDE](https://github.com/HyDE-Project/HyDE) theme of the same name:
+waybar islands, rofi, dunst, kitty, hyprlock, borders and blur, GTK theme `Tokyo-Night`,
+icons `Tela-circle-purple`, cursor `Bibata-Modern-Ice`. Colours are static, no theme engine.

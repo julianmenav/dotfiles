@@ -1,8 +1,4 @@
-/**
- * Rofi launcher — HyDE "Style 6" list, without the mode-switcher column, Tokyo Night colours.
- * Origin: HyDE-Project/HyDE  .local/share/hyde/rofi/themes/style_6.rasi
- * Launch: rofi -show drun   (Super+R)      emoji: rofi -show emoji -modi emoji  (needs rofi-emoji)
- */
+// Launcher (Super+R). Emoji picker: rofi -show emoji -modi emoji
 
 configuration {
     modi:                        "drun,run,window";
