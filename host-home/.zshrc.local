@@ -1,2 +1,11 @@
 # Home desktop (CachyOS) — sourced at the end of the shared .zshrc
 # Personal-only aliases, PATHs and tool hooks go here.
+
+# Cat Pokémon on a new terminal (pokemon-colorscripts-git). Silent if not installed.
+# Any Pokémon instead: replace the -n line with  pokemon-colorscripts --no-title -r
+if [[ -o interactive ]] && command -v pokemon-colorscripts >/dev/null; then
+    typeset -a _cats=(meowth persian skitty delcatty glameow purugly purrloin liepard shinx luxio luxray
+                    litleo pyroar espurr meowstic litten torracat incineroar perrserker zeraora raikou solgaleo)
+    pokemon-colorscripts --no-title -n "${_cats[RANDOM % ${#_cats[@]} + 1]}"
+    unset _cats
+fi

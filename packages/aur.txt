@@ -3,3 +3,4 @@
 clipse                    # clipboard manager (Super+V)
 bibata-cursor-theme       # cursor "Bibata-Modern-Ice"
 mpvpaper                  # video wallpaper (only used by host-home)
+pokemon-colorscripts-git  # cat Pokémon on new terminals (only used by host-home)

@@ -9,13 +9,22 @@ directory is a stow package mirroring `$HOME`; `.stowrc` targets `~`, so the rep
 git clone https://github.com/julianmenav/dotfiles ~/Projects/dotfiles && cd ~/Projects/dotfiles
 sudo pacman -S --needed $(grep -v '^#' packages/pacman.txt)
 paru -S --needed $(sed 's/#.*//' packages/aur.txt)
-git clone https://github.com/ohmyzsh/ohmyzsh ~/.oh-my-zsh
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-curl -fsSL https://raw.githubusercontent.com/HyDE-Project/hyde-themes/Tokyo-Night/Source/Gtk_TokyoNight.tar.gz | tar xz -C ~/.local/share/themes
 stow hyprland hyprlock hypridle hyprpaper waybar rofi dunst kitty gtk qt starship nvim zsh backgrounds
 stow host-home   # or host-work
 chsh -s /usr/bin/zsh
+```
+
+Oh My Zsh and its plugins are cloned automatically the first time zsh starts. Log out and pick the
+Hyprland session.
+
+## Update
+
+```sh
+git pull
+sudo pacman -S --needed $(grep -v '^#' packages/pacman.txt)      # anything new
+stow -R hyprland hyprlock hypridle hyprpaper waybar rofi dunst kitty gtk qt starship nvim zsh backgrounds host-home
+find ~ ~/.config -maxdepth 2 -xtype l -delete                     # links to packages that no longer exist
+hyprctl reload
 ```
 
 ## Layout

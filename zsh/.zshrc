@@ -1,5 +1,10 @@
-# Oh My Zsh
+# Oh My Zsh (cloned on first start if missing, plugins too)
 export ZSH="$HOME/.oh-my-zsh"
+[[ -d "$ZSH" ]] || git clone -q --depth 1 https://github.com/ohmyzsh/ohmyzsh "$ZSH"
+for _p in zsh-autosuggestions zsh-syntax-highlighting; do
+    [[ -d "$ZSH/custom/plugins/$_p" ]] || git clone -q --depth 1 "https://github.com/zsh-users/$_p" "$ZSH/custom/plugins/$_p"
+done
+unset _p
 ZSH_THEME="robbyrussell"
 plugins=(git fzf zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
