@@ -23,6 +23,7 @@
     "modules": [
       "custom/memory",
       "cpu",
+      "custom/gpu",
       "temperature",
       "network",
       "hyprland/language",
@@ -120,6 +121,11 @@
     "exec": "~/.config/waybar/memory-alert.sh",
     "return-type": "json",
     "interval": 5
+  },
+  "custom/gpu": {
+    "exec": "~/.config/waybar/gpu.sh",
+    "return-type": "json",
+    "interval": 3
   },
   "temperature": {
     "hwmon-path-abs": "/sys/class/hwmon",
