@@ -47,3 +47,6 @@ between machines goes into the host package, never into a shared file.
 Tokyo Night, following the [HyDE](https://github.com/HyDE-Project/HyDE) theme of the same name:
 waybar islands, rofi, dunst, kitty, hyprlock, borders and blur, GTK theme `Tokyo-Night`,
 icons `Tela-circle-purple`, cursor `Bibata-Modern-Ice`. Colours are static, no theme engine.
+
+Wallpaper: waneella's *Lull* looping through mpvpaper, hyprpaper underneath as the still fallback.
+The video lives outside the repo; the fetch commands are next to the `exec-once` in `hyprland.conf`.
