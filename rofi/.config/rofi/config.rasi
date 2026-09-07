@@ -1,4 +1,6 @@
-// Launcher (Super+R). Emoji picker: rofi -show emoji -modi emoji
+// Launcher (Super+R). Emoji picker (Super+.): rofi -show emoji -modi emoji -no-show-icons -theme-str 'listview { lines: 12; }'
+// show-icons is global and the emoji mode has no icons: without the flag every row gets an empty icon slot.
+// Rows are icon-height (3em) here, text-height there, so 12 emoji rows fill the same 31em window as 6 apps.
 
 configuration {
     modi:                        "drun,run,window";
