@@ -1,5 +1,5 @@
 # Packages not in the official Arch repos. install.sh tries pacman first (CachyOS ships
 # some of these in its own repo) and falls back to paru/yay.
 clipse                    # clipboard manager (Super+V)
-bibata-cursor-theme       # cursor "Bibata-Modern-Ice"
+bibata-cursor-theme-bin   # cursor "Bibata-Modern-Ice" (prebuilt; the non-bin one builds with clickgen+numpy)
 mpvpaper                  # video wallpaper (only used by host-home)
