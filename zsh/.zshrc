@@ -63,5 +63,9 @@ setopt HIST_IGNORE_SPACE
 eval "$(git wt --init zsh 2>/dev/null)"
 
 
+# uv installer env (prepends ~/.local/bin to PATH)
+[[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
+
+
 # Per-machine config (host-* package)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
