@@ -1,0 +1,98 @@
+[global]
+monitor = 0
+follow = mouse
+enable_posix_regex = true
+width = 300
+origin = top-right
+offset = (20,20)
+scale = 0
+notification_limit = 20
+
+progress_bar = true
+progress_bar_height = 10
+progress_bar_frame_width = 0
+progress_bar_min_width = 125
+progress_bar_max_width = 250
+progress_bar_corner_radius = 4
+
+indicate_hidden = yes
+transparency = 10
+separator_height = 2
+padding = 8
+horizontal_padding = 8
+text_icon_padding = 10
+frame_width = 3
+gap_size = 5
+separator_color = auto
+sort = yes
+corner_radius = 10
+icon_corner_radius = 10
+
+font = Cantarell 10
+line_height = 3
+markup = full
+format = "<b>%s</b>\n%b"
+alignment = left
+vertical_alignment = center
+show_age_threshold = 60
+ellipsize = middle
+ignore_newline = no
+stack_duplicates = true
+hide_duplicate_count = false
+show_indicators = yes
+
+enable_recursive_icon_lookup = true
+icon_theme = "Tela-circle-purple, Adwaita"
+icon_position = left
+min_icon_size = 48
+max_icon_size = 96
+
+sticky_history = yes
+history_length = 20
+browser = /usr/bin/xdg-open
+always_run_script = true
+title = Dunst
+class = Dunst
+ignore_dbusclose = false
+force_xwayland = false
+force_xinerama = false
+mouse_left_click = context, close_current
+mouse_middle_click = do_action, close_current
+mouse_right_click = close_all
+
+[experimental]
+per_monitor_dpi = true
+
+# Tokyo Night colours
+[urgency_low]
+background = "#24283bE6"
+foreground = "#a9b1d6E6"
+frame_color = "#565f89"
+timeout = 4
+
+[urgency_normal]
+background = "#24283bE6"
+foreground = "#c0caf5E6"
+frame_color = "#bb9af7"
+timeout = 5
+
+[urgency_critical]
+background = "#f7768e"
+foreground = "#1a1b26"
+frame_color = "#f7768e"
+timeout = 0
+
+# App tweaks (carried over from the mako config)
+[spotify]
+appname = "Spotify"
+frame_color = "#9ece6a"
+timeout = 3
+
+[volume]
+appname = "volume"
+timeout = 2
+set_stack_tag = "volume"
+
+[slack]
+desktop_entry = "^Slack$"
+new_icon = slack

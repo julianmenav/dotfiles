@@ -1,0 +1,45 @@
+# Official Arch repo packages needed by these dotfiles. One per line, '#' comments allowed.
+# Install: sudo pacman -S --needed $(grep -v '^#' packages/pacman.txt)   (or ./install.sh)
+
+# Hyprland session
+hyprland
+hyprlock
+hypridle
+hyprpaper
+xdg-desktop-portal-hyprland
+hyprpolkitagent
+
+# Shell / bar / launcher / notifications / terminal
+waybar
+rofi
+rofi-emoji
+dunst
+libnotify
+kitty
+starship
+zsh
+zoxide
+fzf
+bat
+neovim
+stow
+
+# Utilities used by keybinds and waybar
+hyprshot
+wl-clipboard
+playerctl
+brightnessctl
+pavucontrol
+dolphin
+
+# Theming (GTK theme itself comes from scripts/theme-assets.sh)
+qt6ct
+qt5ct
+tela-circle-icon-theme-purple
+
+# Fonts (waybar, kitty, hyprlock, rofi, dunst)
+ttf-jetbrains-mono-nerd
+ttf-cascadia-code-nerd
+noto-fonts
+noto-fonts-emoji
+cantarell-fonts

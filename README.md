@@ -1,29 +1,49 @@
 # dotfiles
 
-Managed with [GNU stow](https://www.gnu.org/software/stow/). Every top-level directory is a
-stow package that mirrors `$HOME`. The `.stowrc` sets `--target=~`, so the repo can live anywhere
-(here `~/Projects/dotfiles`) and `stow` always links into your home.
-
-## Layout
-
-- Shared packages (identical on every machine): `hyprland`, `hyprlock`, `hypridle`, `hyprpaper`,
-  `waybar`, `wofi`, `mako`, `kitty`, `starship`, `nvim`, `zsh`, `backgrounds`.
-- Host packages (stow **exactly one**): `host-home` (desktop, NVIDIA), `host-work` (laptop).
-  They provide the files the shared configs include at the end:
-  - `~/.config/hypr/local.conf` — monitors, GPU env vars, machine-only binds (Slack at work)
-  - `~/.zshrc.local` — work tools, aliases, PATHs
+Hyprland desktop, managed with [GNU Stow](https://www.gnu.org/software/stow/). Each top-level
+directory is a stow package mirroring `$HOME`; `.stowrc` targets `~`, so the repo can live anywhere.
 
 ## Install
 
 ```sh
-git clone <this repo> ~/Projects/dotfiles && cd ~/Projects/dotfiles
-stow hyprland hyprlock hypridle hyprpaper waybar wofi mako kitty starship nvim zsh backgrounds
-stow host-home   # or: stow host-work
+git clone https://github.com/julianmenav/dotfiles ~/Projects/dotfiles && cd ~/Projects/dotfiles
+sudo pacman -S --needed $(grep -v '^#' packages/pacman.txt)
+paru -S --needed $(sed 's/#.*//' packages/aur.txt)
+stow hyprland hyprlock hypridle hyprpaper waybar rofi dunst kitty gtk qt starship nvim zsh backgrounds
+stow host-home   # or host-work
+chsh -s /usr/bin/zsh
 ```
 
-Switch profile: `stow -D host-work && stow host-home`. Reload Hyprland with `hyprctl reload`.
+Oh My Zsh and its plugins are cloned automatically the first time zsh starts. Log out and pick the
+Hyprland session.
 
-## Adding a per-machine difference
+## Update
 
-Put it in the host package, not in the shared file. Hyprland's `local.conf` is additive: it can
-add binds, override env vars, or `unbind` a shared bind. `~/.zshrc.local` is a normal zsh file.
+```sh
+git pull
+sudo pacman -S --needed $(grep -v '^#' packages/pacman.txt)      # anything new
+stow -R hyprland hyprlock hypridle hyprpaper waybar rofi dunst kitty gtk qt starship nvim zsh backgrounds host-home
+find ~ ~/.config -maxdepth 2 -xtype l -delete                     # links to packages that no longer exist
+hyprctl reload
+```
+
+## Layout
+
+| Package | What |
+|---|---|
+| `hyprland` | compositor config: binds, rules, look; sources `~/.config/hypr/local.conf` last |
+| `hyprlock`, `hypridle`, `hyprpaper` | lock screen, idle, wallpaper (+ `Super+Shift+W` cycle script) |
+| `waybar`, `rofi`, `dunst` | bar, launcher, notifications |
+| `kitty`, `starship`, `zsh`, `nvim` | terminal and shell |
+| `gtk`, `qt` | GTK settings, qt6ct/qt5ct with a matching palette |
+| `backgrounds` | wallpapers, linked to `~/.config/backgrounds` |
+| `host-home`, `host-work` | per-machine: monitors, GPU env, machine-only binds, `~/.zshrc.local` |
+
+Stow exactly one `host-*` package. Everything else is identical on every machine; a difference
+between machines goes into the host package, never into a shared file.
+
+## Look
+
+Tokyo Night, following the [HyDE](https://github.com/HyDE-Project/HyDE) theme of the same name:
+waybar islands, rofi, dunst, kitty, hyprlock, borders and blur, GTK theme `Tokyo-Night`,
+icons `Tela-circle-purple`, cursor `Bibata-Modern-Ice`. Colours are static, no theme engine.

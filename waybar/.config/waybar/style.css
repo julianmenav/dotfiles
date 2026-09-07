@@ -1,178 +1,216 @@
+/* Tokyo Night */
+@define-color bar-bg    rgba(0, 0, 0, 0.1);   /* needs the shell-blur layerrule in hyprland.conf */
+@define-color main-bg   #24283b;
+@define-color main-fg   #7aa2f7;
+@define-color wb-act-bg #bb9af7;
+@define-color wb-act-fg #b4f9f8;
+@define-color wb-hvr-bg #7aa2f7;
+@define-color wb-hvr-fg #cfc9c2;
+@define-color red       #f7768e;
+@define-color yellow    #e0af68;
+@define-color dim       #565f89;
+
 * {
-    font-family: "MesloLGS Nerd Font Mono Bold";
-    font-size: 14px;
-    font-weight: normal;
+    border-radius: 0em;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 11px;
+    font-weight: 600;
+    min-height: 0;
 }
 
 window#waybar {
-    background: transparent;
-    color: #cdd6f4;
+    background: @bar-bg;
 }
 
-#window {
-    margin: 4px;
-    padding-left: 6px;
-    padding-right: 6px;
+.module {
+    color: @main-fg;
+}
+
+/* ── Islands ── */
+#leaf,
+#leaf-inverse,
+#pill {
+    background-color: @main-bg;
+    border-style: solid;
+    border-color: @main-bg;
+    padding: 0em 1em;
+}
+
+/* leaf: rounded top-left / bottom-right (right island) */
+#leaf,
+#leaf button {
+    border-radius: 10pt 0 10pt 0;
+    border-width: 0em;
+}
+#leaf {
+    margin: 0.3em 1em 0.3em 0em;
+}
+
+/* inverse leaf: rounded top-right / bottom-left (left island) */
+#leaf-inverse,
+#leaf-inverse button {
+    border-radius: 0 10pt 0 10pt;
+    border-width: 0em;
+}
+#leaf-inverse {
+    margin: 0.3em 1em 0.3em 0em;
+}
+
+/* pill: full rounding (centre) */
+#pill,
+#pill button {
+    border-radius: 10pt;
+}
+#pill {
+    margin: 0.3em 1em 0.3em 1em;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+}
+
+label.module {
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
 }
 
 button {
-    border: none;
-    border-radius: 10px;
-    padding: 0 6px;
-    background: transparent;
-    color: inherit;
-    transition: all 0.2s ease;
-}
-
-button:hover {
-    background-color: rgba(255, 255, 255, 0.08);
+    margin: 0.41em 0.11em;
+    border: 0em;
 }
 
 /* ── Workspaces ── */
 #workspaces {
-    background-color: rgba(17, 24, 39, 0.85);
-    border-radius: 12px;
-    margin: 4px 2px;
-    padding: 0 4px;
+    padding: 0em;
 }
 
 #workspaces button {
-    padding: 2px 8px;
-    margin: 3px 2px;
-    border-radius: 8px;
-    color: #6b7280;
+    box-shadow: none;
+    text-shadow: none;
+    padding: 0em 0.3em;
+    margin: 0.3em 0em;
+    color: @main-fg;
 }
 
-#workspaces button.focused,
 #workspaces button.active {
-    background-color: rgba(99, 102, 241, 0.3);
-    color: #a5b4fc;
+    background: @wb-act-bg;
+    color: @wb-act-fg;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+    padding-left: 1.2em;
+    padding-right: 1.2em;
+    transition: all 0.4s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
 #workspaces button:hover {
-    background-color: rgba(99, 102, 241, 0.15);
-    color: #c7d2fe;
+    background: @wb-hvr-bg;
+    color: @wb-hvr-fg;
+    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
-/* ── Shared pill style for all modules ── */
-#language,
-#cpu,
-#custom-memory,
-#temperature,
-#pulseaudio,
-#clock,
-#battery,
-#network,
-#tray {
-    margin: 4px 3px;
-    padding: 2px 12px;
-    border-radius: 12px;
-    background-color: rgba(17, 24, 39, 0.85);
-    transition: all 0.2s ease;
+#workspaces button.urgent {
+    color: @red;
 }
 
-#language:hover,
-#cpu:hover,
-#custom-memory:hover,
-#temperature:hover,
-#pulseaudio:hover,
-#clock:hover,
-#battery:hover,
-#network:hover {
-    background-color: rgba(30, 41, 59, 0.95);
-}
-
-/* ── Clock ── */
-#clock {
-    color: #a5b4fc;
-    font-weight: bold;
-}
-
-/* ── Language ── */
-#language {
-    color: #c4b5fd;
-}
-
-/* ── CPU ── */
-#cpu {
-    color: #6ee7b7;
-}
-
-/* ── Memory ── */
-#custom-memory {
-    color: #93c5fd;
-}
-
+/* ── States ── */
 #custom-memory.warning {
-    color: #fca5a5;
-    background-color: rgba(239, 68, 68, 0.25);
+    color: @red;
     animation: vibrate 0.3s linear infinite;
 }
 
 @keyframes vibrate {
-    0%   { margin-left: 3px; margin-right: 3px; }
-    25%  { margin-left: 1px; margin-right: 5px; }
-    50%  { margin-left: 5px; margin-right: 1px; }
-    75%  { margin-left: 1px; margin-right: 5px; }
-    100% { margin-left: 3px; margin-right: 3px; }
+    0%   { margin-left: 0.2em; margin-right: 0.2em; }
+    25%  { margin-left: 0em;   margin-right: 0.4em; }
+    50%  { margin-left: 0.4em; margin-right: 0em; }
+    75%  { margin-left: 0em;   margin-right: 0.4em; }
+    100% { margin-left: 0.2em; margin-right: 0.2em; }
 }
 
-/* ── Temperature ── */
-#temperature {
-    color: #fcd34d;
-}
-
+#temperature,
+#temperature.warning,
 #temperature.critical {
-    color: #fca5a5;
-    background-color: rgba(239, 68, 68, 0.25);
+    background-color: transparent;
+}
+#temperature.critical {
+    color: @red;
 }
 
-/* ── Network ── */
-#network {
-    color: #67e8f9;
+#custom-gpu.hot {
+    color: @red;
 }
 
-#network.disconnected {
-    color: #6b7280;
-}
-
-/* ── Pulseaudio ── */
-#pulseaudio {
-    color: #f9a8d4;
-}
-
+#network.disconnected,
 #pulseaudio.muted {
-    color: #6b7280;
+    color: @dim;
 }
 
-/* ── Battery ── */
-#battery {
-    color: #86efac;
+#battery.charging,
+#battery.plugged {
+    color: @wb-act-fg;
 }
-
-#battery.charging {
-    color: #86efac;
-}
-
 #battery.warning:not(.charging) {
-    color: #fcd34d;
-    background-color: rgba(245, 158, 11, 0.2);
+    color: @yellow;
+}
+#battery.critical:not(.charging) {
+    color: @red;
 }
 
-#battery.critical:not(.charging) {
-    color: #fca5a5;
-    background-color: rgba(239, 68, 68, 0.25);
+#language {
+    min-width: 1.11em;
 }
 
 /* ── Tray ── */
-#tray {
-    padding: 2px 8px;
-}
-
 #tray > .passive {
     -gtk-icon-effect: dim;
 }
-
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
+}
+#tray menu * {
+    min-height: 1.6em;
+}
+#tray menu separator {
+    min-height: 0.1em;
+}
+
+/* ── Tooltips & menus ── */
+tooltip * {
+    background: transparent;
+    border: none;
+}
+tooltip {
+    background: @main-bg;
+    color: @main-fg;
+    border: 0.1em solid @main-fg;
+    border-radius: 10pt;
+}
+menu {
+    background-color: @main-bg;
+    border-radius: 10pt;
+}
+menu menuitem {
+    transition: 0.25s;
+}
+menu menuitem:hover {
+    background-color: @wb-act-bg;
+    color: @wb-act-fg;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+tooltip,
+menu {
+    animation-name: fadeIn;
+    animation-duration: 0.25s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
 }
