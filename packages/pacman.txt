@@ -31,6 +31,9 @@ playerctl
 brightnessctl
 pavucontrol
 dolphin
+# Region screen recording (Super+Ctrl+Delete)
+wf-recorder
+slurp
 
 # Theming (GTK theme itself comes from scripts/theme-assets.sh)
 qt6ct

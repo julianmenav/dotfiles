@@ -49,4 +49,4 @@ waybar islands, rofi, dunst, kitty, hyprlock, borders and blur, GTK theme `Tokyo
 icons `Tela-circle-purple`, cursor `Bibata-Modern-Ice`. Colours are static, no theme engine.
 
 Wallpaper: waneella's *Lull* looping through mpvpaper, hyprpaper underneath as the still fallback.
-The video lives outside the repo; the fetch commands are next to the `exec-once` in `hyprland.conf`.
+The video lives outside the repo; the fetch commands are in `hyprland/.config/hypr/scripts/wallpaper-video.sh`.
