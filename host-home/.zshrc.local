@@ -1,2 +1,7 @@
 # Home desktop (CachyOS) — sourced at the end of the shared .zshrc
 # Personal-only aliases, PATHs and tool hooks go here.
+
+# pnpm and the Node it manages (`pnpm env use`). `pnpm setup` writes this to
+# ~/.bashrc, which zsh never reads.
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export PATH="$PNPM_HOME/bin:$PATH"
