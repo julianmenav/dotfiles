@@ -128,7 +128,7 @@
     "interval": 3
   },
   "temperature": {
-    "hwmon-path-abs": "/sys/class/hwmon",
+    "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
     "input-filename": "temp1_input",
     "critical-threshold": 90,
     "format": "󰔏  {temperatureC}°C",
