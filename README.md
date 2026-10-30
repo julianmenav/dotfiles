@@ -31,7 +31,7 @@ hyprctl reload
 
 | Package | What |
 |---|---|
-| `hyprland` | compositor config: binds, rules, look; sources `~/.config/hypr/local.conf` last |
+| `hyprland` | compositor config: binds, rules, look; loads `~/.config/hypr/local.lua` last |
 | `hyprlock`, `hypridle`, `hyprpaper` | lock screen, idle, wallpaper (+ `Super+Shift+W` cycle script) |
 | `waybar`, `rofi`, `dunst` | bar, launcher, notifications |
 | `kitty`, `starship`, `zsh`, `nvim` | terminal and shell |
