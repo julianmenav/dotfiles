@@ -40,6 +40,7 @@ hl.on("hyprland.start", function()
     -- Video wallpaper (mpvpaper) on top of hyprpaper; hypridle reruns the script after suspend
     hl.exec_cmd("~/.config/hypr/scripts/wallpaper-video.sh")
     hl.exec_cmd("hyprctl setcursor Bibata-Modern-Ice 24")
+    hl.exec_cmd("hyprsunset -t 6500")
     -- GTK theme, icons, cursor, font
     hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme 'Tokyo-Night' && gsettings set org.gnome.desktop.interface icon-theme 'Tela-circle-purple' && gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice' && gsettings set org.gnome.desktop.interface cursor-size 24 && gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark' && gsettings set org.gnome.desktop.interface font-name 'Cantarell 10'")
 end)
